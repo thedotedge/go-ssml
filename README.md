@@ -1,10 +1,10 @@
 ssml builder
 ============
 
-Quickly build an SSML response body
+Quickly build an SSML response body.
 
 
-`go get github.com/rickcrawford/go-ssml`
+`go get github.com/thedotedge/go-ssml`
 
 
 Features implemented based on documentation here:

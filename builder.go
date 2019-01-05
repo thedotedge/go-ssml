@@ -139,11 +139,18 @@ type Builder interface {
 	SayAs(string, InterpretAs) Builder
 	Date(time.Time, DateFormat) Builder
 	Phoneme(string, Alphabet, string) Builder
+	Lang(string, string) Builder
 	String() string
 }
 
 type builder struct {
 	buf bytes.Buffer
+}
+
+// https://developer.amazon.com/docs/custom-skills/speech-synthesis-markup-language-ssml-reference.html#lang
+func (r *builder) Lang(lang string, text string) Builder {
+	r.Text(fmt.Sprintf(`<lang xml:lang="%s">`, lang)).Text(text).Text("</lang>")
+	return r
 }
 
 func (r *builder) Text(text string) Builder {
